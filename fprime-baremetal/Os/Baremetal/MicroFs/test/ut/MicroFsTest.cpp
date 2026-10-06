@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
-#include <cstring>
 #include <Fw/Test/UnitTest.hpp>
 #include <Fw/Types/MallocAllocator.hpp>
 #include <Fw/Types/String.hpp>
 #include <Os/File.hpp>
 #include <Os/FileSystem.hpp>
+#include <cstring>
 #include <fprime-baremetal/Os/Baremetal/MicroFs/MicroFs.hpp>
 #include "Tester.hpp"
 

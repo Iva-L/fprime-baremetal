@@ -166,8 +166,8 @@ class MicroFs {
     //! \brief register a static alias mapping a human-readable path to a bin/file slot.
     //! Boot-time only: call before tasks start, same as MicroFsInit. Not interrupt-safe.
     //! \return VALID if registered, INVALID if the alias table is full or the alias is already registered
-    static Status registerAlias(const char* alias,     //!< human-readable path, e.g. "PrmDb.dat"
-                                 const char* slotPath);  //!< canonical "/bin<N>/file<M>" slot
+    static Status registerAlias(const char* alias,      //!< human-readable path, e.g. "PrmDb.dat"
+                                const char* slotPath);  //!< canonical "/bin<N>/file<M>" slot
 
     // helper to get state pointer from index
     static MicroFsFileState* getFileStateFromIndex(FwIndexType index);

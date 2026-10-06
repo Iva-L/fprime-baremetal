@@ -64,8 +64,7 @@ void Tester ::AliasResolvesToSlotTest() {
     Os::Baremetal::MicroFs::MicroFsAddBin(cfg, 0, 128, 2);
     Os::Baremetal::MicroFs::MicroFsInit(cfg, 0, alloc);
 
-    ASSERT_EQ(Os::Baremetal::MicroFs::registerAlias("PrmDb.dat", "/bin0/file1"),
-              Os::Baremetal::MicroFs::Status::VALID);
+    ASSERT_EQ(Os::Baremetal::MicroFs::registerAlias("PrmDb.dat", "/bin0/file1"), Os::Baremetal::MicroFs::Status::VALID);
     // duplicate registration is rejected
     ASSERT_EQ(Os::Baremetal::MicroFs::registerAlias("PrmDb.dat", "/bin0/file1"),
               Os::Baremetal::MicroFs::Status::INVALID);
