@@ -103,14 +103,11 @@ void MicroFs::MicroFsCleanup(const FwEnumStoreType id, Fw::MemAllocator& allocat
 }
 
 // helper to register a static alias mapping a human-readable path to a bin/file slot
-MicroFs::Status MicroFs::registerAlias(const char* alias, const char* slotPath) {
-    FW_ASSERT(alias != nullptr);
-    FW_ASSERT(slotPath != nullptr);
-
+MicroFs::Status MicroFs::registerAlias(const Fw::String& alias, const Fw::String& slotPath) {
     MicroFs& microfs = MicroFs::getSingleton();
 
     for (FwIndexType i = 0; i < microfs.s_numAliases; i++) {
-        if (strcmp(microfs.s_aliases[i].alias, alias) == 0) {
+        if (microfs.s_aliases[i].alias == alias) {
             return MicroFs::Status::INVALID;  // already registered
         }
     }
@@ -137,8 +134,8 @@ MicroFs::Status MicroFs::getFileStateIndex(const char* fileName, FwIndexType& st
 
     const char* resolvedName = fileName;
     for (FwIndexType i = 0; i < microfs.s_numAliases; i++) {
-        if (strcmp(microfs.s_aliases[i].alias, fileName) == 0) {
-            resolvedName = microfs.s_aliases[i].slotPath;
+        if (microfs.s_aliases[i].alias == fileName) {
+            resolvedName = microfs.s_aliases[i].slotPath.toChar();
             break;
         }
     }
